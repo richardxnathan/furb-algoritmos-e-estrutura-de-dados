@@ -136,4 +136,32 @@ public class ListaEstaticaTest {
         assertTrue(list.estaVazia());
     }
     
+    @Test
+    public void test_10() {       
+        ListaEstatica list = new ListaEstatica();
+        
+        list.inserir(5);
+        list.inserir(10);
+        list.inserir(15);
+        list.inserir(20);
+        list.inverter();
+        
+        assertEquals("[20, 15, 10, 5]", list.toString());
+    }
+    
+    @Test
+    public void test_11() {
+        ListaEstatica list = new ListaEstatica();
+        
+        list.inserir(5);
+        list.inserir(10);
+        list.inserir(15);
+        list.inserir(20);
+        list.inserir(25);
+        list.inverter();
+        
+        assertEquals("[25, 20, 15, 10, 5]", list.toString());
+    }
+    
+    
 }

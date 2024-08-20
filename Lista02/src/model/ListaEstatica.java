@@ -22,12 +22,12 @@ public class ListaEstatica <T> {
         this.info = novo;
     }
     
-    public void inserir(Object objeto){
+    public void inserir(T valor){
         if(this.info.length == this.tamanho){
             this.redimensionar();
         }
         
-        this.info[tamanho] = objeto;
+        this.info[tamanho] = valor;
         this.tamanho++;
     }
     
@@ -37,11 +37,11 @@ public class ListaEstatica <T> {
         }
     }
     
-    public int buscar(T t){
+    public int buscar(T valor){
         int numeroEncontrado = -1;
         
         for (int i = 0; i < this.tamanho; i++) {
-            if(this.info[i].equals(t)){
+            if(this.info[i].equals(valor)){
                 numeroEncontrado = i;
                 
                 return numeroEncontrado;
@@ -51,9 +51,9 @@ public class ListaEstatica <T> {
         return numeroEncontrado;
     }
     
-    public void retirar(T t){
+    public void retirar(T valor){
         
-        int posicao = this.buscar(t);
+        int posicao = this.buscar(valor);
         
         if(posicao != -1){
             for (int i = posicao; i < this.tamanho; i++) {
@@ -70,11 +70,11 @@ public class ListaEstatica <T> {
         this.tamanho = 0;
     }
     
-    public T obterElemento(int valor){
-        if(valor >= this.tamanho){
+    public T obterElemento(int posicao){
+        if(posicao >= this.tamanho){
             throw new IndexOutOfBoundsException();
         } else {
-            return (T) this.info[valor];
+            return (T) this.info[posicao];
         }   
     }
     
@@ -104,6 +104,22 @@ public class ListaEstatica <T> {
         resultado += "]";
         
         return resultado;
+    }
+    
+    public void inverter(){
+        T t;
+        
+        int i = 0;
+        int j = this.tamanho - 1;
+        
+        while(i < j){
+            t = (T) info[i];
+            info[i] = info[j];
+            info[j] = t;
+            
+            i++;
+            j--;
+        }
     }
 
 }
